@@ -1,0 +1,40 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname foo-evaluation-solution) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+
+; first defining the function
+
+(define (foo s)
+  (if (string=? (substring s 0 1) "a")
+      (string-append s "a")
+      s))
+
+;now calling the function
+(foo (substring "abcde" 0 3))
+
+; in this above line at first substring is evaluated and the string
+; then turn to "abc". so
+(foo "abc")
+;then as usual the function call is replaced by function body
+
+(if (string=? (substring "abc" 0 1) "a")
+    (string-append "abc" "a")
+    "abc")
+
+; now here at first by following inside-outside rule substring is evaluated
+; so it turns into
+(if (string=? "a" "a")
+    (string-append "abc" "a")
+    "abc")
+
+; now the two "a"'s are compared and it evaluated as true.so
+(if true
+    (string-append "abc" "a")
+    "abc")
+
+;now as it evaluated as true then first expression would be evaluated
+;so at first string-append is going to be evaluated.so
+(if true
+    "abca"
+    "abc")
+;then the function return "abca"

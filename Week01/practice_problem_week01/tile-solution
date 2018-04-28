@@ -1,0 +1,11 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname tile-solution) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(require 2htdp/image)
+
+(define (new_square color)
+  (square 20 "solid" color))
+
+(above (beside (new_square "blue") (new_square "yellow"))
+       (beside (new_square "yellow") (new_square "blue")))
+                                                   
